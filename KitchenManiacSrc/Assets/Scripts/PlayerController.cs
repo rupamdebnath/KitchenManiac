@@ -20,10 +20,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        playerAnimator.SetBool("Walk", false);
         if (Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0)
-            playerAnimator.SetBool("Walk", true);
-        else 
-            playerAnimator.SetBool("Walk", false);
+            playerAnimator.SetBool("Walk", true);            
     }
     void FixedUpdate()
     {
