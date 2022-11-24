@@ -10,10 +10,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
 
     Rigidbody playerBody;
-
-    private void Awake()
+    [SerializeField]
+    private Animator playerAnimator;
+    private void Start()
     {
         playerBody = GetComponent<Rigidbody>();
+        playerAnimator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0)
+            playerAnimator.SetBool("Walk", true);
+        else 
+            playerAnimator.SetBool("Walk", false);
     }
     void FixedUpdate()
     {
