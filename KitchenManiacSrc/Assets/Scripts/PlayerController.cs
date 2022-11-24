@@ -8,7 +8,14 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed;
     float translation, rotation;
     // Update is called once per frame
-    void Update()
+
+    Rigidbody playerBody;
+
+    private void Awake()
+    {
+        playerBody = GetComponent<Rigidbody>();
+    }
+    void FixedUpdate()
     {
 
         translation = Input.GetAxisRaw("Vertical") * speed;
@@ -19,7 +26,6 @@ public class PlayerController : MonoBehaviour
         rotation *= Time.deltaTime;
 
         transform.Translate(0, 0, translation);
-
         transform.Rotate(0, rotation, 0);
     }
 }
